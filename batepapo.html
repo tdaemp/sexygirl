@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat com a Vivi</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #222;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        .chat-container {
+            width: 90%;
+            max-width: 500px;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #ff007f;
+            text-align: center;
+        }
+
+        .chat-window {
+            background-color: #444;
+            padding: 10px;
+            border-radius: 8px;
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input input[type="text"] {
+            width: 80%;
+            padding: 8px;
+            border-radius: 8px;
+            border: none;
+            background-color: #555;
+            color: #fff;
+        }
+
+        .chat-input button {
+            width: 20%;
+            padding: 8px;
+            background-color: #ff007f;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .chat-input button:hover {
+            background-color: #ff3399;
+        }
+
+        .nickname {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .nickname input[type="text"] {
+            padding: 8px;
+            border-radius: 8px;
+            border: none;
+            margin-bottom: 10px;
+            background-color: #555;
+            color: #fff;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <h1>Chat com a Vivi</h1>
+
+    <!-- Entrada de nickname -->
+    <div class="nickname" id="nicknameSection">
+        <input type="text" id="nicknameInput" placeholder="Digite seu nickname">
+        <button onclick="setNickname()">Entrar no Chat</button>
+    </div>
+
+    <!-- Janela de bate-papo -->
+    <div class="chat-window" id="chatWindow"></div>
+
+    <!-- Entrada de mensagens -->
+    <div class="chat-input" id="chatInputSection" style="display: none;">
+        <input type="text" id="messageInput" placeholder="Digite sua mensagem">
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+</div>
+
+<script>
+    let nickname = "";
+
+    function setNickname() {
+        const nicknameInput = document.getElementById("nicknameInput").value.trim();
+        if (nicknameInput) {
+            nickname = nicknameInput;
+            document.getElementById("nicknameSection").style.display = "none";
+            document.getElementById("chatInputSection").style.display = "flex";
+            const chatWindow = document.getElementById("chatWindow");
+            chatWindow.innerHTML += `<p><strong>Sistema:</strong> ${nickname} entrou no chat.</p>`;
+        } else {
+            alert("Por favor, digite um nickname.");
+        }
+    }
+
+    function sendMessage() {
+        const messageInput = document.getElementById("messageInput");
+        const message = messageInput.value.trim();
+        if (message) {
+            const chatWindow = document.getElementById("chatWindow");
+            const timestamp = new Date().toLocaleTimeString();
+            chatWindow.innerHTML += `<p><strong>${nickname}</strong> (${timestamp}): ${message}</p>`;
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+            messageInput.value = "";
+        }
+    }
+</script>
+
+</body>
+</html>

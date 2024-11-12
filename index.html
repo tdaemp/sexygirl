@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Sensual</title>
+    <h1>sensualidade</h1>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Menu principal -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="galeria_foto.html">Galeria</a></li>
+                <li><a href="Sobre.html">Sobre</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="batepapo.html">BatePapo</a></li>
+                <!-- Retirei o link direto para `restrito.html` -->
+                <li><a href="#conteudo-restrito">Conteúdo Restrito</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Galeria de fotos -->
+    <section id="galeria" class="galeria">
+        <img src="pernas1.jpg" alt="Legs">
+        <img src="pernas2.jpg" alt="my Legs">
+        <img src="foto.jpg" alt="Prazer a flor da pele">
+    </section>
+
+    <!-- Conteúdo exclusivo -->
+    <section id="conteudo-restrito" class="conteudo-restrito">
+        <h2>Conteúdo Restrito</h2>
+        <p>Para acessar, faça o pagamento via Pix e receba sua senha para desbloquear o conteúdo.</p>
+        <form id="form-pix">
+            <label for="senha">Digite a senha:</label>
+            <input type="password" id="senha" name="senha">
+            <button type="submit">Acessar</button>
+        </form>
+    </section>
+
+    <script>
+        // Verifica a senha digitada ao enviar o formulário
+        document.getElementById("form-pix").addEventListener("submit", function(event) {
+            event.preventDefault(); // Impede o redirecionamento padrão
+            const senha = document.getElementById("senha").value;
+
+            // Substitua "SENHA_CORRETA" pela senha real
+            if (senha === "1234") {
+                window.location.href = "restrito.html"; // Redireciona para o conteúdo restrito se a senha for correta
+            } else {
+                alert("Senha incorreta. Tente novamente.");
+            }
+        });
+    </script>
+
+</body>
+</html>

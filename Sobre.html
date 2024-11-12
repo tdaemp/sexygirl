@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil e Descrição</title>
+    <button onclick="window.location.href='index.html'" style="padding: 10px 20px; background-color: #ff007f; border: none; border-radius: 8px; color: #fff; font-size: 16px; cursor: pointer;">
+        Voltar para a Página Inicial
+    </button>
+    
+    <style>
+        /* Estilo da página */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #121212;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        .container {
+            background-color: #333;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 50%;
+            margin-top: 15px;
+        }
+
+        .caption {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #ff007f;
+        }
+
+        .description {
+            margin-top: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #ddd;
+            background-color: #444;
+            padding: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Sobre Você</h2>
+    <div class="image-container">
+        <img src="foto.jpg" alt="Sua Foto">
+        <p class="caption">Essa é a sua imagem de perfil</p>
+    </div>
+    <div class="description">
+        <!-- Descrição fixa aqui -->
+        <p>
+            Olá, meu nome é [Seu Nome]. Sou apaixonado por [descreva seu hobby ou paixão]. Atualmente, trabalho em [campo de trabalho ou profissão] e gosto de passar meu tempo livre explorando novas ideias e aprendendo coisas novas. Acredito em [valor pessoal ou filosofia], e sempre busco trazer positividade para aqueles ao meu redor.
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

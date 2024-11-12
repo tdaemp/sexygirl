@@ -1,0 +1,46 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+header nav ul ,h1 {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #ff007f; /* Rosa escuro sensual */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.galeria {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.galeria img {
+    width: 30%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.galeria img:hover {
+    transform: scale(1.1);
+}
+
+.conteudo-restrito {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: rgba(255, 0, 127, 0.1);
+    border-radius: 8px;
+}

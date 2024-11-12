@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Fotos</title>
+    <button onclick="window.location.href='index.html'" style="padding: 10px 20px; background-color: #ff007f; border: none; border-radius: 8px; color: #fff; font-size: 16px; cursor: pointer;">
+        Voltar para a Página Inicial
+    </button>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #080808;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 80%;
+            margin-top: 20px;
+        }
+
+        .galeria img {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .galeria img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Estilo do modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 80%;
+        }
+
+        .modal-content img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .close, .download-btn {
+            position: absolute;
+            top: 10px;
+            background-color: #ff007f;
+            border: none;
+            color: #fff;
+            padding: 8px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .close {
+            right: 10px;
+        }
+
+        .download-btn {
+            left: 10px;
+        }
+
+        /* Formulário de senha */
+        .password-form {
+            display: none;
+            position: fixed;
+            z-index: 101;
+            background-color: #0e0d0d;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .password-form label {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .password-form input, .password-form button {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Galeria de Fotos</h1>
+
+<div class="galeria">
+    <!-- Exemplo de 12 imagens -->
+    <img src="foto1.jpg" alt="Foto 1">
+    <img src="foto2.jpg" alt="Foto 2">
+    <img src="foto3.jpg" alt="Foto 3">
+    <img src="foto4.jpg" alt="Foto 4">
+    <img src="foto5.jpg" alt="Foto 5">
+    <img src="foto6.jpg" alt="Foto 6">
+    <img src="foto7.jpg" alt="Foto 7">
+    <img src="foto8.jpg" alt="Foto 8">
+    <img src="foto9.jpg" alt="Foto 9">
+    <img src="foto10.jpg" alt="Foto 10">
+    <img src="foto11.jpg" alt="Foto 11">
+    <img src="foto12.jpg" alt="Foto 12">
+</div>
+
+<!-- Modal de imagem grande -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">X</span>
+        <button class="download-btn" onclick="requestPassword()">Baixar</button>
+        <img id="modalImage" src="" alt="Imagem Ampliada">
+    </div>
+</div>
+
+<!-- Formulário para inserir a senha -->
+<div id="passwordForm" class="password-form">
+    <label for="password">Digite a senha para fazer o download:</label>
+    <input type="password" id="password">
+    <button onclick="checkPassword()">Confirmar</button>
+</div>
+
+<script>
+    // Função para abrir o modal com a imagem em tamanho grande
+    const modal = document.getElementById("modal");
+    const modalImage = document.getElementById("modalImage");
+    const passwordForm = document.getElementById("passwordForm");
+    let downloadImage = "";
+
+    document.querySelectorAll(".galeria img").forEach(img => {
+        img.addEventListener("click", () => {
+            modal.style.display = "flex";
+            modalImage.src = img.src;
+            downloadImage = img.src;
+        });
+    });
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    // Função para solicitar senha antes de baixar
+    function requestPassword() {
+        passwordForm.style.display = "block";
+        passwordForm.style.left = "50%";
+        passwordForm.style.top = "50%";
+        passwordForm.style.transform = "translate(-50%, -50%)";
+    }
+
+    // Função para verificar a senha
+    function checkPassword() {
+        const password = document.getElementById("password").value;
+        const correctPassword = "1234"; // Altere para a senha real
+
+        if (password === correctPassword) {
+            passwordForm.style.display = "none";
+            alert("Download iniciado!");
+            window.location.href = downloadImage;
+        } else {
+            alert("Senha incorreta.");
+        }
+    }
+</script>
+
+</body>
+</html>
